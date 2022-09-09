@@ -30,10 +30,10 @@ public class MeasurementValidator implements Validator {
   @Override
   public void validate(Object target, Errors errors) {
     Measurement measurement = (Measurement) target;
-    if (((Measurement) target).getSensor() == null) {
+    if (measurement.getSensor() == null) {
       errors.rejectValue("sensor", "", "Sensor should be indicated");
     }
-    if(!sensorService.findByName(((Measurement) target).getSensor().getName()).isPresent()){
+    if(!sensorService.findByName(measurement.getSensor().getName()).isPresent()){
       errors.rejectValue("sensor", "","Sensor with such a name doesn't exist.");
     }
   }
