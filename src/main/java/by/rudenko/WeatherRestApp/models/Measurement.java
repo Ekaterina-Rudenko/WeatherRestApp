@@ -1,5 +1,6 @@
 package by.rudenko.WeatherRestApp.models;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,7 +16,7 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="Measurement")
-public class Measurement {
+public class Measurement implements Serializable {
   @Id
   @Column(name = "id")
   @GeneratedValue(strategy = GenerationType.IDENTITY)

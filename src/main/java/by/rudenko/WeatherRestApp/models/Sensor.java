@@ -1,5 +1,6 @@
 package by.rudenko.WeatherRestApp.models;
 
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,7 +14,8 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "Sensor")
-public class Sensor {
+public class Sensor implements
+    Serializable {
   @Id
   @Column(name = "id")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
