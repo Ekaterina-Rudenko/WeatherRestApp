@@ -3,9 +3,11 @@ package by.rudenko.WeatherRestApp.controllers;
 import by.rudenko.WeatherRestApp.dto.MeasurementDTO;
 import by.rudenko.WeatherRestApp.models.Measurement;
 import by.rudenko.WeatherRestApp.services.MeasurementService;
+import by.rudenko.WeatherRestApp.util.AppErrorResponse;
 import by.rudenko.WeatherRestApp.util.ErrorMessageBuilder;
 import by.rudenko.WeatherRestApp.util.MeasurementException;
 import by.rudenko.WeatherRestApp.util.MeasurementValidator;
+import by.rudenko.WeatherRestApp.util.SensorNotCreatedException;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.validation.Valid;
@@ -14,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -63,6 +66,13 @@ public class MeasurementController {
 
   private Measurement convertToMeasurement(MeasurementDTO measurementDTO){
     return modelMapper.map(measurementDTO, Measurement.class);
+  }
+
+  @ExceptionHandler
+  private ResponseEntity<AppErrorResponse> handleException(MeasurementException e) {
+    AppErrorResponse errorResponse = new AppErrorResponse(
+        e.getMessage(), System.currentTimeMillis());
+    return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
   }
 
 }
