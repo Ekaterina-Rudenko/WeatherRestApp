@@ -1,9 +1,17 @@
 package by.rudenko.WeatherRestApp.util;
 
-public class MeasurementErrorResponse {
+public class AppErrorResponse {
 
   private String message;
   private long timestamp;
+
+  public AppErrorResponse(String message, long timestamp) {
+    this.message = message;
+    this.timestamp = timestamp;
+  }
+
+  public AppErrorResponse() {
+  }
 
   public String getMessage() {
     return message;

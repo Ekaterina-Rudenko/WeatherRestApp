@@ -5,7 +5,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 
 public class ErrorMessageBuilder {
-  public static void buildErrorResponse(BindingResult bindingResult){
+  public static String buildErrorResponse(BindingResult bindingResult){
     StringBuilder errorMessage = new StringBuilder();
     List<FieldError> errorList =bindingResult.getFieldErrors();
     for(FieldError error : errorList){
@@ -14,7 +14,7 @@ public class ErrorMessageBuilder {
           .append(error.getDefaultMessage() == null ? error.getCode() : error.getDefaultMessage())
           .append("; ");
     }
-    throw new MeasurementException(errorMessage.toString());
+    return errorMessage.toString();
   }
 
 }
