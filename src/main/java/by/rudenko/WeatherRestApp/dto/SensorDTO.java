@@ -5,8 +5,8 @@ import javax.validation.constraints.Size;
 
 public class SensorDTO {
 
-  @NotEmpty(message = "Sensor should have name")
-  @Size(min = 3, max = 30, message = "Sensor name should contain from 3 to 30 characters")
+  @NotEmpty(message = "FROM DTO Sensor should have name")
+  @Size(min = 3, max = 30, message = "FROM DTO Sensor name should contain from 3 to 30 characters")
   private String name;
 
   public String getName() {

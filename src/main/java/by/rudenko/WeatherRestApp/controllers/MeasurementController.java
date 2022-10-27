@@ -1,6 +1,7 @@
 package by.rudenko.WeatherRestApp.controllers;
 
 import by.rudenko.WeatherRestApp.dto.MeasurementDTO;
+import by.rudenko.WeatherRestApp.dto.MeasurementResponse;
 import by.rudenko.WeatherRestApp.models.Measurement;
 import by.rudenko.WeatherRestApp.services.MeasurementService;
 import by.rudenko.WeatherRestApp.util.AppErrorResponse;
@@ -39,8 +40,8 @@ public class MeasurementController {
     this.modelMapper = modelMapper;
   }
   @GetMapping()
-  public List<MeasurementDTO> findAll(){
-    return measurementService.findAll().stream().map(this::convertToMeasurementDTO).collect(Collectors.toList());
+  public MeasurementResponse findAll(){
+    return new MeasurementResponse(measurementService.findAll().stream().map(this::convertToMeasurementDTO).collect(Collectors.toList()));
   }
 
   @PostMapping("/add")

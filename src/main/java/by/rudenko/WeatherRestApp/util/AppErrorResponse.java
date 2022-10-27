@@ -1,11 +1,14 @@
 package by.rudenko.WeatherRestApp.util;
 
+import org.springframework.http.HttpStatus;
+
 public class AppErrorResponse {
 
   private String message;
   private long timestamp;
 
-  public AppErrorResponse(String message, long timestamp) {
+
+  public AppErrorResponse(String message, long timestamp){
     this.message = message;
     this.timestamp = timestamp;
   }
@@ -28,4 +31,5 @@ public class AppErrorResponse {
   public void setTimestamp(long timestamp) {
     this.timestamp = timestamp;
   }
+
 }

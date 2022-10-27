@@ -23,7 +23,7 @@ public class Sensor implements
 
   @Column(name = "name")
   @NotEmpty(message = "Sensor should have name")
-  @Size(min = 3, max = 30, message = "Sensor name should contain from 3 to 30 characters")
+  @Size(min = 3, max = 30, message = "Sensor should contain from 3 to 30 characters")
   private String name;
 
   @OneToMany(mappedBy = "sensor")
